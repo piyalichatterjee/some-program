@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
+    />
+  </head>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    .container {
+      background-color: blueviolet;
+      height: 100vh;
+      width: 100%;
+      padding: 10px;
+    }
+
+    .todo-app {
+      background-color: aliceblue;
+      margin: 2rem auto;
+      width: 80%;
+      height: 30vh;
+    }
+
+    .todo-app h1 {
+      font-size: 1rem;
+      font-family: "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif;
+      padding: 0.5rem;
+    }
+
+    .row {
+      display: flex;
+      /* border: 2px solid red; */
+      justify-content: space-around;
+      /* align-items: center; */
+      margin: 0.5rem;
+      border-radius: 10px;
+      padding: 0rem 0.4rem;
+      overflow: hidden;
+      background-color: rgb(217, 219, 219);
+    }
+
+    input {
+      flex: 1;
+      /* eita mne holo puro width niye ney */
+      background-color: transparent;
+      border: none;
+      /* width: 100%; */
+      outline: none;
+      padding: 0.5rem 1rem;
+    }
+
+    button {
+      border: none;
+      padding: 0.3rem 1rem;
+      border-radius: 20px;
+      background-color: rgb(225, 75, 21);
+      color: aliceblue;
+      cursor: pointer;
+      margin: 0.2rem;
+    }
+
+    ul {
+      /* display: flex; */
+      /* flex-direction: column; */
+    }
+
+    li {
+      list-style: none;
+      font-size: 0.8rem;
+      padding: 0.2rem 1rem;
+      user-select: none;
+      /*uesr kono vbei copy ba select korte parbe na*/
+      cursor: pointer;
+    }
+
+    .checked {
+      display: flex;
+      justify-content: space-between;
+    }
+
+    .iconbox {
+      display:block;
+    }
+  </style>
+
+  <body>
+    <div class="container">
+      <div class="todo-app">
+        <h1>To-Do list</h1>
+        <div class="row">
+          <input type="text" id="inputbox" placeholder=" Add your text" />
+          <button onclick="addTask()">Add</button>
+        </div>
+        <ul id="list-container">
+          <!-- <li class="checked"> <i class="fa-solid fa-check"></i>task 1</li>
+                    <li>task 2</li>
+                    <li> tast 3</li> -->
+        </ul>
+      </div>
+    </div>
+  </body>
+  <script>
+    let inputBox = document.getElementById("inputbox");
+    console.log(inputBox);
+    let listContainer = document.getElementById("list-container");
+    console.log(listContainer);
+    function addTask() {
+      if (inputBox.value === "") {
+        alert("You must write something!");
+        console.log("hello");
+      } else {
+        let li = document.createElement("li");
+        li.textContent = inputBox.value;
+        li.setAttribute("class", "checked");
+        let div = document.createElement("div");
+        div.setAttribute("class", "iconbox");
+        let firstI = document.createElement("i");
+        let secondI = document.createElement("i");
+        firstI.setAttribute("class", "fa-solid fa-check");
+        secondI.setAttribute("class", "fa-solid fa-xmark");
+        div.appendChild(firstI);
+        div.appendChild(secondI);
+        li.appendChild(div);
+        listContainer.appendChild(li);
+        firstI.addEventListener("click", () => {
+          if (li.style.textDecoration == "") {
+            li.style.textDecoration = "line-through";
+            console.log("k");
+            saveData();
+          } else {
+            li.style.textDecoration = "";
+            console.log("l");
+            saveData();
+          }
+        });
+        secondI.addEventListener("click", () => {
+          li.textContent = "";
+          console.log("hi");
+          saveData();
+        });
+      }
+      inputBox.value = "";
+      saveData();
+    }
+    function saveData() {
+      localStorage.setItem("data", listContainer.textContent);
+    }
+    function showTask() {
+      listContainer.textContent = localStorage.getItem("data");
+      console.log(localStorage.getItem("data"))
+    }
+    showTask();
+
+  </script>
+</html>

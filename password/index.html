@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+</head>
+
+<body>
+    <input type="text" id="password">
+    <button onclick="copy()"><i class="fa-solid fa-copy"></i></button>
+    <button id="btn" onclick="createPassword()">click us</button>
+</body>
+<script>
+    let passwordBox = document.getElementById("password")
+    console.log(passwordBox)
+
+    let length = 8
+    let upperCase = "ABCDEFGHIJKLMNOPQRSTUVWXYZ"
+    let lowerCase = upperCase.toLowerCase()
+    console.log(lowerCase)
+    let number = "0123456789"
+    // console.log(number.length)
+    let symbol = "!@#$%^&*()_+-*/<>?/-={}[\|]"
+    // console.log(symbol.length)
+    let allChars = upperCase + lowerCase + number + symbol
+
+    console.log(allChars.length)
+    function createPassword() {
+        let password = ""
+        password += upperCase[Math.floor(Math.random() * upperCase.length)]
+        password += lowerCase[Math.floor(Math.random() * lowerCase.length)]
+        password += number[Math.floor(Math.random() * number.length)]
+        password += symbol[Math.floor(Math.random() * symbol.length)]
+        // console.log(password)
+        // console.log(password.length)
+        // console.log(typeof password)
+        while(length>password.length){
+            password += allChars[Math.floor(Math.random() * allChars.length)]
+            console.log(password)
+            console.log(password.length)
+        }
+        passwordBox.value = password
+    }
+   function copy(){
+    passwordBox.select()
+    document.execCommand("copy")
+   } 
+
+
+</script>
+
+</html>

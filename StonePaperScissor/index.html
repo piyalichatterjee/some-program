@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Stone Paper Scissor</title>
+  </head>
+  <body>
+    <button class="btn">Stone</button>
+    <button class="btn">Paper</button>
+    <button class="btn">Scissor</button>
+  </body>
+  <script>
+    let button = Array.from(document.getElementsByClassName("btn"));
+    console.log(button);
+    button.forEach((element) => {
+      element.addEventListener("click", () => {
+        let gameName = ["Stone", "Paper", "Scissor"];
+        let randomName = gameName[Math.floor(Math.random() * 3)];
+        console.log(element.textContent);
+        if (element.textContent === randomName) {
+          console.log("Match Draw");
+        } else if (element.textContent === "Stone" && randomName === "Paper") {
+          console.log("Paper win");
+          console.log(1);
+        } else if (
+          element.textContent === "Paper" &&
+          randomName === "Scissor"
+        ) {
+          console.log("Scissor win");
+          console.log(2);
+        } else if (
+          element.textContent === "Scissor" &&
+          randomName === "Stone"
+        ) {
+          console.log("Stone win");
+          console.log(3);
+        } else if (
+          element.textContent === "Stone" &&
+          randomName === "Scissor"
+        ) {
+          console.log("Stone win");
+          console.log(4);
+        } else if (
+          element.textContent === "Scissor" &&
+          randomName === "Paper"
+        ) {
+          console.log("Scissor win");
+          console.log(5);
+        } else if (element.textContent === "Paper" && randomName === "Stone") {
+          console.log("Paper win");
+          console.log(6);
+        }
+        console.log(randomName);
+      });
+    });
+  </script>
+</html>

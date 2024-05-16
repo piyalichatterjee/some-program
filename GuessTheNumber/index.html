@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Guess The Number</title>
+  </head>
+  <body>
+    <input type="number" id="numberbox" />
+    <button id="btn">Click Us</button>
+  </body>
+  <script>
+    let numberBox = document.getElementById("numberbox");
+    console.log(numberBox);
+    let button = document.getElementById("btn");
+    console.log(button);
+    let count = 1;
+    let randomNumber = Math.floor(Math.random() * 100 + 1);
+    console.log(randomNumber);
+    button.addEventListener("click", () => {
+      let number = parseInt(numberBox.value);
+      console.log(number);
+      if (number > 100) {
+        alert("Your number must be below 100");
+      } else if (number <= 1) {
+        alert("Your number must be greater then 1");
+      }
+      while (count <= 3) {
+        count++;
+        if (number === randomNumber) {
+          alert("Your guess the correct number");
+          break;
+        } else if (number > randomNumber) {
+          alert("Your number is greater then the corect number");
+          console.log("Your number is greater then the corect number");
+          break;
+        } else if (number < randomNumber) {
+          alert("Your number is smaller then the corect number");
+          console.log("Your number is smaller then the corect number");
+          break;
+        }
+      }
+      if (count >= 4) {
+        alert("Chance Over");
+        alert(`Your corect number is ${randomNumber}`);
+      }
+    });
+  </script>
+</html>

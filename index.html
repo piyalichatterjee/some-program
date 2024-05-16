@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+    /* *{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+.mainBox{
+    border: 2px solid blue;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items:center;
+    height: 100Vh;
+background-color: lightcoral;
+}
+.mainBox h1{
+    margin: 2rem;
+
+}
+.box{
+height: 20vh;
+display: flex;
+align-items: center;
+
+    border: 2px solid red;
+} */
+</style>
+
+<body>
+    <div class="mainbox">
+        <h1>Password Generator</h1>
+        <div class="box">
+            <label for="password">Password:</label>
+            <input type="text" id="password" placeholder="Password">
+            <button id="btn">Submit</button>
+        </div>
+    </div>
+</body>
+<script>
+    let password = document.getElementById("password")
+    // console.log(password)
+    let submit = document.getElementById("btn")
+    // console.log(submit)
+    submit.addEventListener("click", () => {
+        // console.log("hello")
+        let passwordValue = password.value
+        // console.log( passwordValue)
+        let arr = passwordValue.length
+        // console.log(typeof arr)
+        let upperCase ="ABCDEFGHIJKLMNOPQRSTUVWXYZ"
+        // console.log(upperCase)
+        let lowerCase = upperCase.toLowerCase()
+        // console.log(lowerCase)
+        let specialCharacter = "!@#$%^&*()"
+        let number = "0123456789"
+        let isUpperCaseInclude = false
+        let isLowerCaseInclude = false
+        let isNumberInclude = false
+        let isSpecialCharacterInclude = false
+
+        if (arr >= 5) {
+            // console.log("yes")
+            for (i = 0; i < passwordValue.length; i++) {
+                // console.log(i)
+                let upperCaseInclude = upperCase.includes(passwordValue[i])
+                // console.log(upperCaseInclude)
+                if (upperCaseInclude) {
+                    // console.log("ache")
+
+                    isUpperCaseInclude = true
+                    break
+                }
+            }
+
+            for (i = 0; i < passwordValue.length; i++) {
+                // console.log(i)
+                let lowerCaseInclude = lowerCase.includes(passwordValue[i])
+                // console.log(lowerCaseInclude)
+                if (lowerCaseInclude) {
+                    // console.log("ache")
+
+                    isLowerCaseInclude = true
+                    break
+                }
+            }
+            for (i = 0; i < passwordValue.length; i++) {
+                // console.log(i)
+                let numberInclude =number.includes(passwordValue[i])
+                // console.log(numberInclude)
+                if (numberInclude) {
+                    // console.log("ache")
+                    isNumberInclude = true
+                    break
+                }
+            }
+            for (i = 0; i < passwordValue.length; i++) {
+                // console.log(i)
+                let specialCharacterInculude =specialCharacter.includes(passwordValue[i])
+                // console.log(specialCharacterInculude)
+                if (specialCharacterInculude) {
+                    isSpecialCharacterInclude = true
+                    break
+                }
+
+            }
+            if (isUpperCaseInclude && isLowerCaseInclude && isNumberInclude && isSpecialCharacterInclude) {
+                // console.log(isUpperCaseInclude)
+                // console.log(isLowerCaseInclude)
+                // console.log(isNumberInclude)
+                // console.log(isSpecialCharacterInclude)
+                alert("Password is a very storng")
+            }
+             else if ((isUpperCaseInclude && isLowerCaseInclude && isNumberInclude) || (isUpperCaseInclude && isLowerCaseInclude && isSpecialCharacterInclude) || (isUpperCaseInclude && isNumberInclude && isSpecialCharacterInclude) || (isLowerCaseInclude && isNumberInclude && isSpecialCharacterInclude)) {
+                // console.log(isUpperCaseInclude)
+                // console.log(isLowerCaseInclude)
+                // console.log(isNumberInclude)
+                // console.log(isSpecialCharacterInclude)
+                alert("Password is a storng")
+            }
+
+
+            else if ((isUpperCaseInclude && isLowerCaseInclude) || (isUpperCaseInclude && isNumberInclude) || (isUpperCaseInclude && isSpecialCharacterInclude) || (isLowerCaseInclude && isNumberInclude) || (isLowerCaseInclude && isSpecialCharacterInclude) || (isNumberInclude && isSpecialCharacterInclude)) {
+                console.log(isUpperCaseInclude)
+                console.log(isLowerCaseInclude)
+                console.log(isNumberInclude)
+                console.log(isSpecialCharacterInclude)
+
+                alert("password is a weak")
+
+            }
+            else if (isUpperCaseInclude || isLowerCaseInclude || isNumberInclude || isSpecialCharacterInclude) {
+
+                alert("Password is a very weak")
+            }
+            else {
+                // console.log("not very storng")
+            }
+        }
+        else {
+            // console.log("no")
+            alert("password very short")
+        }
+    })
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    // let p="piyali"
+    // let k=p.toLocaleUpperCase()
+    // console.log(k)
+    // let h=k.toLocaleLowerCase()
+    // console.log(h)
+    let k = "piyali is bad"
+    let p = k.includes("s")
+    // console.log(p)
+
+
+    // for(i=0;i<=9;i++){
+    //     // console.log(i)
+    //     let b=passwordValue.includes(i)
+    //     console.log(b)
+
+</script>
+
+</html>

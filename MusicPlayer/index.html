@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
+    />
+  </head>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif;
+    }
+
+    .contanier {
+      background-color: rgb(46, 45, 45);
+      height: 100vh;
+      width: 100%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-direction: column;
+    }
+
+    .music-player {
+      width: 80%;
+      height: 50vh;
+      background-color: rgb(9, 112, 130);
+      text-align: center;
+    }
+
+    nav {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      /* border: 2px solid red; */
+      margin: 0.5rem;
+    }
+    nav .circle {
+      border-radius: 50%;
+      background-color: gray;
+      height: 1.5rem;
+      width: 1.5rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 5px 10px rgb(113, 114, 114);
+      color: black;
+    }
+    #progress {
+      -webkit-appearance: none; /*eitar mne holo default range slider ke hide korbe*/
+      width: 80%;
+      height: 2vh;
+      border-radius: 5px;
+      cursor: pointer;
+      margin: 40px 0;
+      background-color: rgb(227, 53, 82);
+    }
+    #progress::-webkit-slider-thumb {
+      -webkit-appearance: none;
+      background-color: rgb(250, 67, 95);
+      width: 20px;
+      height: 20px;
+      border-radius: 50%;
+      border: 5px solid rgb(245, 242, 242);
+      box-shadow: 0 5px 5px rgb(170, 169, 169);
+    }
+    .controls {
+      display: flex;
+      justify-content: space-evenly;
+      align-items: center;
+    }
+    .controls div {
+      /* border: 2px solid red; */
+      width: 30px;
+      height: 30px;
+      margin: 20px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      border-radius: 50%;
+      background-color: aliceblue;
+      box-shadow: 0 8px 10px rgb(146, 139, 139);
+      color: rgb(240, 70, 124);
+      font-size: 0.8rem;
+      cursor: pointer;
+    }
+    .controls div:nth-child(2) {
+      /* border: 2px solid black; */
+      transform: scale(1.5);
+      background-color: rgb(212, 23, 127);
+      color: aliceblue;
+    }
+  </style>
+  <body>
+    <div class="contanier">
+      <div class="music-player">
+        <nav>
+          <div class="circle">
+            <i class="fa-solid fa-angle-left"></i>
+          </div>
+          <div class="circle">
+            <i class="fa-solid fa-bars"></i>
+          </div>
+        </nav>
+        <audio id="song">
+          <source
+            src="Agar-Tum-Saath-Ho-Lofi-Remix(PagalWorld).mp3"
+            type="audio/mpeg"
+          />
+        </audio>
+        <input type="range" value="0" id="progress" />
+
+        <div class="controls">
+          <div><i class="fa-solid fa-backward"></i></div>
+          <div onclick="playPause()">
+            <i class="fa-solid fa-play" id="ctrlIcon"></i>
+          </div>
+          <div><i class="fa-solid fa-forward"></i></div>
+        </div>
+      </div>
+    </div>
+  </body>
+  <script>
+    let progress = document.getElementById("progress");
+    console.log(progress);
+    let song = document.getElementById("song");
+    console.log(song);
+    let ctrlIcon = document.getElementById("ctrlIcon");
+    console.log(ctrlIcon);
+    // console.log(song.play());
+    song.onloadedmetadata = function () {
+      progress.max = song.duration;
+      progress.value = song.currentTime;
+    };
+    function playPause() {
+      if (ctrlIcon.classList.contains("fa-play")) {
+        song.play();
+        ctrlIcon.classList.remove("fa-play");
+        ctrlIcon.classList.add("fa-pause");
+        console.log(5);
+        setInterval(() => {
+          progress.value = song.currentTime;
+        }, 1000);
+      } else {
+        song.pause();
+        ctrlIcon.classList.add("fa-play");
+        ctrlIcon.classList.remove("fa-pause");
+        console.log(4);
+      }
+    }
+    progress.onchange = function () {
+      song.play();
+      song.currentTime = progress.value;
+      ctrlIcon.classList.remove("fa-play");
+      ctrlIcon.classList.add("fa-pause");
+    };
+  </script>
+  <!-- <i class="fa-solid fa-pause"></i> -->
+</html>

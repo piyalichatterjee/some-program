@@ -1,0 +1,327 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Spotify -Your favourite music is here</title>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
+    />
+  </head>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif;
+    }
+    body {
+      background-color: rgb(246, 215, 174);
+    }
+    nav {
+      background-color: black;
+      color: white;
+    }
+    nav ul {
+      height: 6vh;
+      display: flex;
+      align-items: center;
+      /* border: 2px solid wheat; */
+    }
+    nav li {
+      list-style: none;
+      padding: 0 1rem;
+    }
+    nav i {
+      color: rgb(10, 99, 10);
+    }
+    .container {
+      min-height: 70vh;
+      background-color: black;
+      color: white;
+      font-size: 0.5rem;
+      display: flex;
+      width: 70%;
+      margin: 0.3rem auto;
+      border-radius: 10px;
+      padding: 1rem;
+    }
+    .bottom {
+      position: sticky;
+      bottom: 0;
+      background-color: black;
+      height: 22vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      color: white;
+    }
+    #myProgressBar {
+      width: 80%;
+      height: 5px;
+      margin: 1rem;
+      cursor: pointer;
+    }
+    .icons i {
+      cursor: pointer;
+      padding: 0 0.5rem;
+    }
+    .songItem {
+      display: flex;
+      background-color: white;
+      color: black;
+      justify-content: space-around;
+      border-radius: 20px;
+      align-items: center;
+      width: 80%;
+      margin: 1rem 0;
+      padding: 0.2rem 0;
+    }
+    .songItem img {
+      width: 10%;
+      border-radius: 50%;
+    }
+    .songItem .songName {
+      font-size: 0.8rem;
+    }
+    .songItem i {
+      padding: 0.2rem;
+      cursor: pointer;
+
+    }
+    .songItemContainer{
+      margin-top: 2rem;
+      /* border: 2px solid red; */
+    }
+    .songInfo{
+      margin-left: 2.5rem;
+      /* border: 2px solid white; */
+      width: 30%;
+      font-size: 0.5rem;
+    }
+    .songInfo img{
+      width: 15%;
+      margin: 0 0.2rem;
+      opacity: 0;
+      transition: opacity 1s ease-in-out;
+    }
+    .iconbox{
+      /* border: 2px solid red; */
+      display: flex;
+      align-items: center;
+    }
+  </style>
+  <body>
+    <nav>
+      <ul>
+        <li>
+          <i class="fa-brands fa-spotify"><span>Spotify</span></i>
+        </li>
+        <li>Home</li>
+        <li>About</li>
+      </ul>
+    </nav>
+    <div class="container">
+      <div class="songlist">
+        <h1>Best of NCS-No Copyright Sounds</h1>
+        <div class="songItemContainer">
+          <div class="songItem">
+            <img src="./covers/1.jpg" alt="error" />
+            <span class="songName">Let me Love You</span>
+            <span class="songlistplay"
+              ><span  class="timetamp">05.22</span><i id="0"  class="fa-regular songItemPlay fa-circle-play"></i
+            ></span>
+          </div>
+          <div class="songItem">
+            <img src="./covers/2.jpg" alt="error" />
+            <span class="songName">Let me Love You</span>
+            <span class="songlistplay"
+              ><span  class="timetamp">05.22</span><i  id="1" class="fa-regular songItemPlay  fa-circle-play"></i
+            ></span>
+          </div>
+          <div class="songItem">
+            <img src="./covers/3.jpg" alt="error" />
+            <span class="songName">Let me Love You</span>
+            <span class="songlistplay"
+              ><span  class="timetamp">05.22</span><i id="2"  class="fa-regular  songItemPlay fa-circle-play"></i
+            ></span>
+          </div>
+          <div class="songItem">
+            <img src="./covers/4.jpg" alt="error" />
+            <span class="songName">Let me Love You</span>
+            <span class="songlistplay"
+              ><span  class="timetamp">05.22</span><i  id="3" class="fa-regular songItemPlay fa-circle-play"></i
+            ></span>
+          </div>
+          <div class="songItem">
+            <img src="./covers/5.jpg" alt="error" />
+            <span class="songName">Let me Love You</span>
+            <span class="songlistplay"
+              ><span class="timetamp">05.22</span><i  id="4" class="fa-regular songItemPlay fa-circle-play"></i
+            ></span>
+          </div>
+        </div>  
+      </div>
+      </div>      
+      <div class="songBanner"></div>
+    </div>
+    <div class="bottom">
+      <input type="range" name="range" id="myProgressBar"
+          value="0"  min="0" max="100" />
+      <div class="iconbox">
+        <div class="songInfo">
+          <img src="./covers/playing.gif" alt="error" id="gif"><span id="masterSongName">Salam-e-Ishq</span>
+        </div>
+        <div class="icons">
+          <i class="fa-solid fa-backward"id="previous"></i>
+          <i class="fa-regular fa-circle-play" id="masterPlay"></i>
+          <i class="fa-solid fa-forward" id="next"></i>
+        </div>
+      </div>
+    </div>
+  </body>
+  <script>
+    let songIndex=0
+    let audioElement=new Audio("songs/1.mp3")
+    // audioElement.play()
+    let masterPlay=document.getElementById("masterPlay")
+    // console.log(masterPlay)
+    let myProgressBar=document.getElementById("myProgressBar")
+    // console.log(myProgressBar)
+    let gif=document.getElementById("gif")
+    // console.log(gif)
+    let songName=Array.from(document.getElementsByClassName("songName"))
+    // console.log(songName)
+    let masterSongName=document.getElementById("masterSongName")
+    // console.log(masterSongName)
+let song=[
+  {audioName:"Salam-e-Ishq",filePath:"song/1.mp3",coverPath:"cover/1.jpg"},
+  {audioName:"The business",filePath:"song/2.mp3",coverPath:"cover/2.jpg"},
+  {audioName:"Save your tears",filePath:"song/3.mp3",coverPath:"cover/3.jpg"},
+  {audioName:"blinding light",filePath:"song/4.mp3",coverPath:"cover/4.jpg"},
+  {audioName:"don't play",filePath:"song/5.mp3",coverPath:"cover/5.jpg"},
+]
+songName.forEach((element,i)=>{
+// console.log(element,i)
+element.textContent=song[i].audioName
+})
+
+
+
+masterPlay.addEventListener("click",()=>{
+  if(masterPlay.classList.contains("fa-circle-play")){
+    audioElement.play()
+    masterPlay.classList.remove("fa-circle-play")
+    masterPlay.classList.add("fa-circle-pause")
+    gif.style.opacity="1"
+    // console.log(5)
+  }
+  else{
+    audioElement.pause()
+    masterPlay.classList.remove("fa-circle-pause")
+    masterPlay.classList.add("fa-circle-play")
+    gif.style.opacity="0"
+    // console.log(2)
+  }
+})
+
+audioElement.addEventListener("timeupdate",()=>{
+let progress=parseInt((audioElement.currentTime/audioElement.duration)*100)
+myProgressBar.value=progress
+// console.log(progress)
+// console.log(audioElement.currentTime*100)
+// console.log((audioElement.currentTime/audioElement.duration)*100)
+})
+myProgressBar.addEventListener("change",()=>{
+  audioElement.currentTime=myProgressBar.value*audioElement.duration/100
+})
+
+
+let makeAllPlay=()=>{
+  let songItemPlay=Array.from(document.getElementsByClassName("songItemPlay"))
+// console.log(songItemPlay)
+songItemPlay.forEach((element)=>{
+  // console.log(element)
+element.classList.remove("fa-circle-pause")
+element.classList.add("fa-circle-play")
+console.log(50)
+})
+}
+
+
+
+let songItemPlay=Array.from(document.getElementsByClassName("songItemPlay"))
+// console.log(songItemPlay)
+songItemPlay.forEach((element) => {
+  // console.log(element)
+  element.addEventListener("click",(e)=>{
+    console.log(e.target)
+    makeAllPlay()
+      e.target.classList.remove("fa-circle-play")
+      e.target.classList.add("fa-circle-pause")
+      console.log(45)
+      let songIndex=parseInt(e.target.id)
+      audioElement.src=`songs/${songIndex+1}.mp3`
+      masterSongName.textContent=song[songIndex].audioName
+      console.log(songIndex)
+      console.log(audioElement)
+      audioElement.currentTime=0
+      audioElement.play()
+      gif.style.opacity="1"
+      masterPlay.classList.remove("fa-circle-play")
+      masterPlay.classList.add("fa-circle-pause")
+
+  })
+})
+let next=document.getElementById("next")
+console.log(next)
+next.addEventListener("click",()=>{
+  if(songIndex>=5){
+    songIndex=0
+    console.log(songIndex)
+  }
+  else{
+    songIndex+=1
+    console.log(songIndex)
+  }
+      audioElement.src=`songs/${songIndex+1}.mp3`
+      masterSongName.textContent=song[songIndex].audioName
+      console.log(songIndex)
+      console.log(audioElement)
+      audioElement.currentTime=0
+      audioElement.play()
+      masterPlay.classList.remove("fa-circle-play")
+      masterPlay.classList.add("fa-circle-pause")
+
+})
+let previous=document.getElementById("previous")
+console.log(previous)
+previous.addEventListener("click",()=>{
+  if(songIndex<=0){
+    songIndex=0
+    console.log(songIndex)
+    console.log("hi")
+  }
+  else{
+    songIndex -= 1
+    console.log(songIndex)
+    console.log("hello")
+  }
+      audioElement.src=`songs/${songIndex+1}.mp3`
+      masterSongName.textContent=song[songIndex].audioName
+      console.log(songIndex)
+      console.log(audioElement)
+      audioElement.currentTime=0
+      audioElement.play()
+      masterPlay.classList.remove("fa-circle-play")
+      masterPlay.classList.add("fa-circle-pause")
+
+})
+
+
+
+
+  </script>
+</html>
