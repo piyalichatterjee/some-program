@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
+    />
+
+    <style>
+      #listbox {
+        display: flex;
+        flex-direction: column;
+      }
+      #listbox li {
+        list-style: none;
+        display: flex;
+        align-items: center;
+        justify-content: space-evenly;
+        /* border: 2px solid red; */
+        width: 50%;
+        cursor: pointer;
+        /* flex-direction: column; */
+      }
+      #listbox h2 {
+        /* text-decoration:none; */
+      }
+    </style>
+  </head>
+  <body>
+    <!-- <i class="fa-solid fa-check"></i> -->
+    <input type="text" id="text" />
+    <button id="btn">Add</button>
+    <div id="itembox">
+      <ul id="listbox">
+        <!-- <li>hello</li> -->
+        <!-- <li><i class="fa-solid fa-check"></i>hello<i class="fa-solid fa-trash"></i></li> -->
+      </ul>
+    </div>
+    <!-- <i class="fa-solid fa-trash"></i> -->
+
+    <!-- <h1 class="letter" >hello</h1> -->
+  </body>
+  <script>
+    // let letter=document.getElementsByClassName("letter")[0]
+    // console.log(letter)
+    // let value=letter.classList.contains("letter")
+    // console.log(value)
+
+
+        let text=document.getElementById("text")
+        // console.log(text)
+        let listBox=document.getElementById("listbox")
+        // console.log(listBox)
+        let itemBox=document.getElementById("itembox")
+        // console.log(itemBox)
+        let btn=document.getElementById("btn")
+        // console.log(btn)
+        // let li=false
+        btn.addEventListener("click",()=>{
+         
+            if(text.value==""){
+                alert("enter your input")
+            }
+            else{
+                let box=text.value
+                let li=document.createElement("li")
+                let h2=document.createElement("h2")
+                let first=document.createElement("i")
+                let last=document.createElement("i")
+            li.appendChild(h2)
+            li.appendChild(first)
+            li.appendChild(last)
+            listBox.appendChild(li)
+            // console.log(first)
+            // console.log(last)
+            // console.log(li)
+            h2.textContent=text.value
+            console.log(box)
+            first.setAttribute("class","fa-solid fa-check")
+            last.setAttribute("class","fa-solid fa-trash")
+            first.addEventListener("click",()=>{
+                if(h2.style.textDecoration==""){
+                    h2.style.textDecoration="line-through"
+                    console.log(4)
+                }
+                else if (h2.style.textDecoration=="line-through"){
+                    h2.style.textDecoration=""
+                    console.log(10)
+                }
+            })
+
+            last.addEventListener("click",()=>{
+                li.textContent=""
+                // console.log("trach")
+            })
+        }
+        trach()
+        })
+
+    function trach(){
+  
+       localStorage.setItem("key",listBox.textContent)
+        
+    }
+    function save(){
+        listBox.textContent=localStorage.getItem("key")
+        let arr=[""]
+
+    }
+    save()
+
+    // trach()
+  </script>
+</html>

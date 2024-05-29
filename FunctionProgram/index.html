@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Function Program</title>
+  </head>
+  <body></body>
+  <script>
+    //     1. **Sum of Two Numbers**
+    //    - Write a function `sum(a, b)` that returns the sum of two numbers `a` and `b`.
+
+    // function sum(a,b){
+    //     return a+b
+    // }
+    // console.log(sum(10,2))
+
+    // 2. **Check Even or Odd**
+    //    - Create a function `isEven(num)` that returns `true` if the given number `num` is even and `false` if it is odd.
+
+    // function isEven(num){
+    //     if(num%2===0){
+    //         return true
+    //         // console.log("even")
+    //     }
+    //     else{
+    //         num%2===1
+    //         return false
+    //         // console.log("odd")
+    //     }
+    // }
+
+    // console.log(isEven(31))
+
+    // 3. **Find the Maximum of Three Numbers**
+    //    - Write a function `maxOfThree(a, b, c)` that returns the largest of three numbers `a`, `b`, and `c`.
+
+    // function maxOfThree(a, b, c) {
+    //   if (a > b && a > c) {
+    //     console.log("1st")
+    //     return a;
+    // } else if (b > a && b > c) {
+    //     console.log("2nd")
+    //     return b;
+    // } else if (c > a && c > b) {
+    //       console.log("3rd")
+    //     return c;
+    //   }
+    // }
+    // console.log(maxOfThree(30,5,100));
+
+    // function maxOfThree(a, b, c){
+    // return Math.max(a,b,c)
+
+    // }
+    // console.log(maxOfThree(20,46,50))
+
+    // 4. **Factorial of a Number**
+    //    - Create a function `factorial(n)` that returns the factorial of a number `n`.
+
+    //  let num=6
+    // //  let num2=0
+    //  for(let i=num;i>=2;i--){
+
+    //       num*=i-1
+
+    //       // console.log(i)
+    //       // console.log(num2)
+    //     }
+    //     console.log(num)
+
+    // function value(num) {
+    //   for (let i = num; i >= 2; i--) {
+    //     num *= i - 1;
+    //     //       // console.log(i)
+    //     //       // console.log(num2)
+    //   }
+    //   console.log(num);
+    // }
+
+    // value(6);
+
+    //   **Palindrome Check**
+    //  - Write a function `isPalindrome(str)` that checks if a given string `str` is a palindrome (reads the same forward and backward).
+
+    // 6. **Fibonacci Sequence**
+    //  - Create a function `fibonacci(n)` that returns the `n`-th number in the Fibonacci sequence.
+
+    // function fibonacci(n){
+    //   let num=0
+    // for(let i=0;i<=n;i++){
+
+    //    num+=i
+    // console.log(i)
+    // // console.log(num)
+    // }
+    // console.log(num)
+
+    // }
+    // fibonacci(4)
+
+    // 7. **Array Sum**
+    //    - Write a function `sumArray(arr)` that takes an array of numbers `arr` and returns the sum of all the elements.
+
+    // function sumArray(arr) {
+    //   let num = 0;
+    //   arr.forEach((e) => {
+    //     num += e;
+    //     console.log(e);
+    //   });
+    //   console.log(num);
+    //   console.log(arr);
+    // }
+    // sumArray([1, 2, 3, 8]);
+
+    // 8. **Find the Longest Word**
+    //    - Create a function `longestWord(sentence)` that takes a string `sentence` and returns the longest word in the sentence.
+
+    // function longestWord(sentence){
+    // let box=sentence.split(" ")
+    // // let num=""
+    // for(let i=0;i<box.length;i++){
+    //   console.log(box[i].length)
+    // }
+    //   // box.forEach((e)=>{
+
+    //   //   console.log(e)
+    //   // })
+    //   // console.log(num)
+    // // console.log(sentence.length)
+    // // console.log(box[2])
+
+    // }
+    // longestWord("Traveling is important in life because it allows us to explore new places and cultures, learn new things, and make connections with people from all over the world.")
+
+    // 9. **Prime Number Check**
+    //  - Write a function `isPrime(num)` that returns `true` if `num` is a prime number and `false` otherwise.
+
+    function isPrime(num) {
+      let Check = true;
+      for (let i = 2; i < num; i++) {
+        console.log(i);
+
+        if (num % i === 0) {
+          Check = false;
+          break
+          // console.log("no prime " + num);
+        }
+      }
+      return Check;
+    }
+
+    console.log(isPrime(49));
+
+    // 10. **Flatten Nested Arrays**
+    //     - Create a function `flattenArray(arr)` that takes a nested array `arr` and returns a single, flattened array.
+00
+
+
+
+  </script>
+</html>

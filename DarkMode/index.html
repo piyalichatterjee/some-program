@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        font-family: "Roboto", sans-serif;
+      }
+
+      .contanier {
+        /* border: 2px solid green; */
+        height: 100vh;
+      }
+      .navbox {
+        width: 100%;
+        /* border: 2px solid red; */
+        display: flex;
+        padding-top:0.5rem;
+        justify-content: space-between;
+        align-items: center;
+      }
+      .navbox #icon {
+        color: orangered;
+        font-size: 2rem;
+        margin-left: 4.5rem;
+      }
+      .navbox nav {
+        /* border: 2px solid rgb(6, 6, 6); */
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin: 0 1rem;
+        width: 100%;
+        max-width: 400px;
+      }
+      .navbox nav ul {
+        /* border: 2px solid rgb(99, 181, 5); */
+        display: flex;
+        align-items: center;
+        list-style: none;
+      }
+      .navbox nav li {
+        font-size: 0.6rem;
+        font-weight: 600;
+        margin: 0.2rem 0.5rem;
+        cursor: pointer;
+        transition: color 1s ease-in-out;
+        /* border: 2px solid rgb(32, 2, 57); */
+      }
+      .navbox nav li:hover {
+        color: orangered;
+      }
+      .heading {
+        /* border: 2px solid; */
+        display: flex;
+        justify-content: space-around;
+        align-items: center;
+        /* margin-top: 5rem; */
+        height: 80vh;
+      }
+      .heading .textbox {
+        width: 40%;
+        /* border: 2px solid red; */
+      }
+      .heading image {
+        width: 400px;
+        border: 2px solid rgb(8, 0, 255);
+      }
+      .heading img {
+        width: 300px;
+        height: 50vh;
+        /* border: 2px solid red; */
+      }
+      .heading h1 {
+        font-size: 3rem;
+        margin: 0.6rem;
+      }
+      .heading h1 span {
+        color: orangered;
+      }
+      .heading p {
+        font-size: 0.6rem;
+        text-align: justify;
+        margin: 0 0.6rem;
+      }
+      .heading button {
+        margin: 0.8rem;
+        background-color: rgb(235, 92, 3);
+        color: white;
+        padding: 0.4rem 0.5rem;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        transition: color 1s ease-in-out;
+      }
+      .heading button:hover {
+        color: orangered;
+      }
+      .navbox i {
+        cursor: pointer;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="contanier">
+      <div class="navbox">
+        <h1 id="icon">kAte</h1>
+        <nav>
+          <ul>
+            <li>HOME</li>
+            <li>ABOUT</li>
+            <li>PORTFOLIO</li>
+            <li>SERVICES</li>
+            <li>HIRE ME</li>
+          </ul>
+          <i class="fa-solid fa-moon" id="iconMoon"></i>
+          <!-- <i class="fa-solid fa-sun"></i> -->
+        </nav>
+      </div>
+      <div class="heading">
+        <div class="textbox">
+          <h1>I'm <span>Kate</span> Amelia</h1>
+          <p>
+            This is my official portfolio website to showcase my all works
+            related to web development and UL design.
+          </p>
+          <button>Download CV</button>
+        </div>
+        <div class="image">
+          <img
+            src="./Images/christopher-gower-m_HRfLhgABo-unsplash.jpg"
+            alt=""
+          />
+        </div>
+      </div>
+    </div>
+  </body>
+  <script>
+    let iconMoon = document.getElementById("iconMoon");
+    console.log(iconMoon);
+    // let body=document.getElementsByTagName("body")
+    // console.log(body)
+    iconMoon.addEventListener("click", () => {
+      if (iconMoon.classList.contains("fa-moon")) {
+        document.body.style.backgroundColor = "black";
+        document.body.style.color = "white";
+        iconMoon.classList.remove("fa-moon");
+        iconMoon.classList.add("fa-sun");
+        console.log(iconMoon);
+        console.log("holo");
+        // console.log(iconMoon.classList.contains("fa-solid fa-moon"))
+      } else {
+        // iconMoon.classList.contains("fa-sun")
+        document.body.style.backgroundColor = "white";
+        document.body.style.color = "black";
+        iconMoon.classList.remove("fa-sun");
+        iconMoon.classList.add("fa-moon");
+        console.log(iconMoon);
+        console.log("holo1");
+        // console.log(iconMoon.classList.contains("fa-solid fa-moon"))
+      }
+    });
+  </script>
+</html>

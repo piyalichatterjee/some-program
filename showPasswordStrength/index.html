@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Show password strength</title>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
+    />
+  </head>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    body {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+      background-image: linear-gradient(
+        to bottom right,
+        rgb(81, 81, 81),
+        rgb(13, 13, 13)
+      );
+    }
+    .passwordbox {
+      /* border: 2px solid black; */
+      width: 60%;
+      height: 6vh;
+
+      position: relative;
+    }
+    .passwordbox input {
+      width: 90%;
+      height: 5vh;
+      background-color: transparent;
+      border: 2px solid rgb(5, 4, 4);
+      outline: none;
+      padding: 1rem;
+      color: white;
+    }
+    .passwordbox i {
+      position: absolute;
+      right: 12%;
+      top: 25%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 50%;
+      background-color: gray;
+      height: 20px;
+      width: 20px;
+      cursor: pointer;
+    }
+    .passwordbox h1 {
+      font-size: 0.7rem;
+      font-weight: 200;
+      display: none;
+      margin: 0.3rem;
+      font-family: "kFranklin Gothic Medium", "Arial Narrow", Arial, sans-serif;
+    }
+  </style>
+  <body>
+    <div class="passwordbox" id="password">
+      <input type="password" id="inputBox" />
+      <i class="fa-solid fa-angle-right"></i>
+      <h1 id="show">Password is <span id="strength"></span></h1>
+    </div>
+  </body>
+  <script>
+    let password = document.getElementById("password");
+    console.log(password);
+    let inputBox = document.getElementById("inputBox");
+    let show = document.getElementById("show");
+    let strength = document.getElementById("strength");
+    console.log(strength);
+    console.log(inputBox);
+    console.log(show);
+
+    inputBox.addEventListener("input", () => {
+      let box = inputBox.value;
+      console.log(box.length);
+      if (box.length > 0 && box.length < 4) {
+        show.style.display = "block";
+        strength.textContent = "weak";
+        show.style.color = " rgba(255, 4, 4, 0.713)";
+        inputBox.style.border = "1px solid  rgba(255, 4, 4, 0.713)";
+
+        // console.log("ki");
+      } else if (box.length >= 4 && box.length < 8) {
+        // show.style.display = "block";
+        strength.textContent = "medium";
+        show.style.color = "yellow";
+        inputBox.style.border = "1px solid yellow";
+        // console.log("hh");
+      } else if (box.length >= 8) {
+        // show.style.display = "block";
+        strength.textContent = "Strong";
+        show.style.color = "green";
+        inputBox.style.border = "1px solid green";
+        // console.log("ses");
+      } else {
+        show.style.display = "";
+        inputBox.style.border = "";
+      }
+    });
+  </script>
+</html>

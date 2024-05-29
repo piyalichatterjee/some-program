@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Toast Notification</title>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
+    />
+  </head>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif;
+    }
+    .buttons {
+      margin: 1rem;
+    }
+    .buttons button {
+      margin: 0 0.5rem;
+      background-color: rgb(163, 158, 158);
+      padding: 0.5rem 1rem;
+      border-radius: 5px;
+      border: none;
+      cursor: pointer;
+    }
+    #toastBox {
+      position: absolute;
+      bottom: 10%;
+      right: 5%;
+      /* color: aqua; */
+      display: flex;
+      flex-direction: column;
+      align-items: flex-end;
+      /* border: 2px solid rebeccapurple; */
+      padding: 1rem;
+    }
+    div {
+      /* border: 2px solid red; */
+    }
+    .toast {
+      width: 220px;
+      height: 8vh;
+      background-color: rgb(246, 250, 249);
+      font-weight: 500;
+      font-size: 0.8rem;
+      margin: 0.8rem 0;
+      box-shadow: 0 0 20px rgba(0, 0, 0, 0.6);
+      display: flex;
+      align-items: center;
+      /* border: 2px solid red; */
+      position: relative;
+    }
+    .toast i {
+      margin: 1rem;
+      color: green;
+      font-size: 1.2rem;
+    }
+    .toast.error i {
+      color: red;
+    }
+    .toast.invalid i {
+      color: orange;
+    }
+    .bar {
+      height: 2px;
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      background-color: green;
+      margin-top: 10px;
+      animation: anim 5s linear forwards;
+    }
+    @keyframes anim {
+      100% {
+        width: 0;
+      }
+    }
+    .errorbar {
+      background-color: red;
+    }
+    .invalidbar {
+      background-color: orange;
+    }
+  </style>
+  <body>
+    <div class="buttons">
+      <button onclick="showToast(successMsg)">Success</button>
+      <button onclick="showToast(errorMsg)">Error</button>
+      <button onclick="showToast(invalidMsg)">Invalid</button>
+    </div>
+    <div id="toastBox"></div>
+  </body>
+  <script>
+    let toastBox = document.getElementById("toastBox");
+    console.log(toastBox);
+    let successMsg =
+      '<i class="fa-solid fa-circle-check"></i>Successfully submitted';
+    let errorMsg =
+      '<i class="fa-solid fa-circle-exclamation"></i>please fix the error!';
+    let invalidMsg =
+      '<i class="fa-solid fa-circle-xmark"></i> Invalid input, check again';
+
+    function showToast(msg) {
+      let toastDiv = document.createElement("div");
+      let barDiv = document.createElement("div");
+      toastDiv.classList.add("toast");
+      toastDiv.innerHTML = msg;
+
+      toastDiv.appendChild(barDiv);
+      console.log(barDiv);
+      toastBox.appendChild(toastDiv);
+      console.log(toastDiv);
+
+      barDiv.classList.add("bar");
+
+      if (msg.includes("error")) {
+        toastDiv.classList.add("error");
+        barDiv.classList.add("errorbar");
+      }
+      if (msg.includes("Invalid")) {
+        toastDiv.classList.add("invalid");
+        barDiv.classList.add("invalidbar");
+      }
+      setTimeout(()=>{
+        toastDiv.remove()
+      },5000)
+    }
+  </script>
+</html>
